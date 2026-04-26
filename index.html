@@ -1,55 +1,95 @@
-<!DOCTYPE html><html lang="id">
-<head>
+<!DOCTYPE html><html lang="id"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kenangan Kelas</title>
   <style>
-    body {font-family: Arial, sans-serif; margin:0; background:#f4f6fb;}
-    header {display:flex; justify-content:space-between; padding:15px 40px; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1);} 
-    nav a {margin-left:20px; text-decoration:none; color:#333; font-weight:bold;}/* HERO AWAL */
+    body {font-family: Arial, sans-serif; margin:0; background:#eef4ff;}header {
+  display:flex; justify-content:space-between;
+  padding:15px 40px;
+  background:linear-gradient(90deg,#4facfe,#00c6ff);
+  color:white;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {margin-left:20px; text-decoration:none; color:white; font-weight:bold;}
+
+/* HERO */
 .hero {display:flex; align-items:center; justify-content:center; padding:60px; gap:60px;}
-.card {background:white; padding:15px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:260px; text-align:center;}
+
+.card {
+  background:white; padding:15px; border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  width:260px; text-align:center;
+  border-top:5px solid #4facfe;
+  opacity:0; transform:translateY(40px);
+}
+
 .card img {width:100%; border-radius:15px;}
-.hero-text h2 {font-size:34px; margin-bottom:10px;}
+
+.hero-text {opacity:0; transform:translateY(40px);}
+.hero-text h2 {font-size:34px; margin-bottom:10px; color:#2b6cff;}
 .hero-text p {color:#555; max-width:400px;}
 
 /* MEMBERS */
 .members {padding:40px; text-align:center;}
-.members h2 {margin-bottom:30px;}
+.members h2 {margin-bottom:30px; color:#2b6cff;}
+
 .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:25px;}
+
 .member-card {
   background:white; padding:15px; border-radius:20px;
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
   transition:0.3s;
+  border-bottom:4px solid #4facfe;
+  opacity:0; transform:translateY(40px);
 }
-.member-card:hover {transform:translateY(-5px);} 
-.member-card img {
-  width:100%; height:200px; object-fit:cover;
-  border-radius:15px;
-  background:#c00;
+
+.member-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 15px 30px rgba(79,172,254,0.3);
 }
-.member-card h4 {margin:10px 0 5px;}
-.member-card p {font-size:12px; color:#666;}
+
+.member-card img {width:100%; height:200px; object-fit:cover; border-radius:15px; cursor:pointer;}
 
 /* MOMENTS */
-.gallery {padding:40px; background:#fff; text-align:center;}
-.gallery h2 {font-size:28px; margin-bottom:20px;}
-.gallery-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-}
+.gallery {padding:40px; background:#ffffff; text-align:center;}
+.gallery h2 {font-size:28px; margin-bottom:20px; color:#2b6cff;}
+
+.gallery-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px;}
+
 .gallery-grid img {
   width:100%; border-radius:15px;
   filter:grayscale(100%);
   transition:0.3s;
+  cursor:pointer;
+  opacity:0; transform:translateY(40px);
 }
+
 .gallery-grid img:hover {
   filter:grayscale(0%);
   transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(79,172,254,0.4);
 }
 
-footer {text-align:center; padding:15px; font-size:12px; color:#777;}
+/* ANIMASI AKTIF */
+.show {opacity:1 !important; transform:translateY(0) !important; transition:0.8s;}
+
+/* MODAL FOTO */
+.modal {
+  display:none; position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center; align-items:center;
+}
+
+.modal img {
+  max-width:90%; max-height:90%; border-radius:15px;
+}
+
+footer {
+  text-align:center; padding:15px; font-size:12px;
+  color:#fff; background:linear-gradient(90deg,#4facfe,#00c6ff);
+}
 
   </style>
 </head>
@@ -61,18 +101,19 @@ footer {text-align:center; padding:15px; font-size:12px; color:#777;}
     <a href="#members">Students</a>
     <a href="#gallery">Gallery</a>
   </nav>
-</header><!-- HERO AWAL + TEACHER --><section class="hero" id="teacher">
-  <div class="card">
+</header><section class="hero" id="teacher">
+  <div class="card fade">
     <img src="guru.jpg">
     <h3>IBU NOOR FAIZAH</h3>
     <p>WALI KELAS XIB MTS MATHOLI'UL HUDA</p>
-  </div>  <div class="hero-text">
+  </div>  <div class="hero-text fade">
     <h2>BEST TEACHER!</h2>
-    <p>Teruslah bermimpi dan jangan pernah berhenti belajar. Dunia teknologi menunggu karya kalian selanjutnya.</p>
+    <p>Teruslah bermimpi dan jangan pernah berhenti belajar.</p>
   </div>
-</section><!-- STUDENTS --><section class="members" id="members">
+</section><section class="members" id="members">
   <h2>Students</h2>
-  <div class="grid"><!-- 30 SISWA --><!-- Copy-paste tinggal ganti nama & foto --><div class="member-card"><img src="siswa1.jpg"><h4>ADIT</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
+  <div class="grid">
+    <div class="member-card"><img src="siswa1.jpg"><h4>ADIT</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa2.jpg"><h4>RIFKI</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa3.jpg"><h4>DAFFA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa4.jpg"><h4>VIKRI</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
@@ -81,7 +122,8 @@ footer {text-align:center; padding:15px; font-size:12px; color:#777;}
 <div class="member-card"><img src="siswa7.jpg"><h4>FAHMI</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa8.jpg"><h4>TIO</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa9.jpg"><h4>ALI</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
-<div class="member-card"><img src="siswa10.jpg"><h4>FAIRUZ</h4><p>XIB MTS MATHOLI'UL HUDA</p></div><div class="member-card"><img src="siswa11.jpg"><h4>WISNU</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
+<div class="member-card"><img src="siswa10.jpg"><h4>FAIRUZ</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
+<div class="member-card"><img src="siswa11.jpg"><h4>WISNU</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa12.jpg"><h4>ANAS</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa13.jpg"><h4>TAMAM</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa14.jpg"><h4>TONY</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
@@ -90,7 +132,8 @@ footer {text-align:center; padding:15px; font-size:12px; color:#777;}
 <div class="member-card"><img src="siswa17.jpg"><h4>RARA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa18.jpg"><h4>NAILY</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa19.jpg"><h4>SELVI</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
-<div class="member-card"><img src="siswa20.jpg"><h4>SASKIA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div><div class="member-card"><img src="siswa21.jpg"><h4>SITI</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
+<div class="member-card"><img src="siswa20.jpg"><h4>SASKIA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
+<div class="member-card"><img src="siswa21.jpg"><h4>SITI</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa22.jpg"><h4>AQILA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa23.jpg"><h4>IFA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa24.jpg"><h4>NURUL</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
@@ -99,8 +142,9 @@ footer {text-align:center; padding:15px; font-size:12px; color:#777;}
 <div class="member-card"><img src="siswa27.jpg"><h4>DIANA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa28.jpg"><h4>ULIMA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
 <div class="member-card"><img src="siswa29.jpg"><h4>ANA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
-<div class="member-card"><img src="siswa30.jpg"><h4>HAFSA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div></div>
-</section><!-- MOMENTS --><section class="gallery" id="gallery">
+<div class="member-card"><img src="siswa30.jpg"><h4>HAFSA</h4><p>XIB MTS MATHOLI'UL HUDA</p></div>
+  </div>
+</section><section class="gallery" id="gallery">
   <h2>MOMENTS</h2>
   <div class="gallery-grid">
     <img src="m1.jpg">
@@ -110,7 +154,37 @@ footer {text-align:center; padding:15px; font-size:12px; color:#777;}
     <img src="m5.jpg">
     <img src="m6.jpg">
   </div>
-</section><footer>
+</section><!-- MODAL --><div class="modal" id="modal">
+  <img id="modal-img">
+</div><footer>
   © 2026 Kenangan Kelas | by Kelas9B
-</footer></body>
-</html>
+</footer><script>
+  // ANIMASI SCROLL
+  const elements = document.querySelectorAll('.card, .hero-text, .member-card, .gallery-grid img');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  elements.forEach(el => observer.observe(el));
+
+  // MODAL FOTO
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+    });
+  });
+
+  modal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+</script></body>
+            </html>
